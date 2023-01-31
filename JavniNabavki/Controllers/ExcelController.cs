@@ -70,11 +70,11 @@ namespace JavniNabavki.Controllers
                                 objExam.Tip = Convert.ToString(dtExamRecords.Rows[i][1]);
                                 objExam.Mesec = Convert.ToString(dtExamRecords.Rows[i][2]);
 
-                                objExam.Pocetok = (Convert.ToDateTime(dtExamRecords.Rows[i][3])).Date;
-                                objExam.Kraj = (Convert.ToDateTime(dtExamRecords.Rows[i][4])).Date;
-                                objExam.Datum = (Convert.ToDateTime(dtExamRecords.Rows[i][5])).Date;
-                                objExam.Ispit = (Convert.ToDateTime(dtExamRecords.Rows[i][6])).Date;
-                                objExam.PopravenIspit = (Convert.ToDateTime(dtExamRecords.Rows[i][7])).Date;
+                                objExam.Pocetok = Convert.ToString(dtExamRecords.Rows[i][3]);
+                                objExam.Kraj = Convert.ToString(dtExamRecords.Rows[i][4]);
+                                objExam.Datum = Convert.ToString(dtExamRecords.Rows[i][5]);
+                                objExam.Ispit = Convert.ToString(dtExamRecords.Rows[i][6]);
+                                objExam.PopravenIspit = Convert.ToString(dtExamRecords.Rows[i][7]);
                                 var newExam = await _examRepository.Create(objExam);
 
                                 if (newExam != null)

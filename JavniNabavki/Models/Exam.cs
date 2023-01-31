@@ -11,11 +11,11 @@ namespace JavniNabavki.Models
         public int Id { get; set; }
         public string Tip { get; set; }
         public string Mesec { get; set; }
-        public DateTime Pocetok { get; set; }
-        public DateTime Kraj { get; set; }
-        public DateTime Datum { get; set; }
-        public DateTime Ispit { get; set; }
-        public DateTime PopravenIspit { get; set; }
+        public string Pocetok { get; set; }
+        public string Kraj { get; set; }
+        public string Datum { get; set; }
+        public string Ispit { get; set; }
+        public string PopravenIspit { get; set; }
 
     }
 }
