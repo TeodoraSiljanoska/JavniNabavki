@@ -70,11 +70,11 @@ namespace JavniNabavki.Controllers
                                 objExam.Tip = Convert.ToString(dtExamRecords.Rows[i][1]);
                                 objExam.Mesec = Convert.ToString(dtExamRecords.Rows[i][2]);
 
-                                objExam.Pocetok = Convert.ToString(dtExamRecords.Rows[i][3]);
-                                objExam.Kraj = Convert.ToString(dtExamRecords.Rows[i][4]);
-                                objExam.Datum = Convert.ToString(dtExamRecords.Rows[i][5]);
-                                objExam.Ispit = Convert.ToString(dtExamRecords.Rows[i][6]);
-                                objExam.PopravenIspit = Convert.ToString(dtExamRecords.Rows[i][7]);
+                                objExam.Pocetok = dtExamRecords.Rows[i][5].ToString().Length !=0 ? Convert.ToDateTime(dtExamRecords.Rows[i][3]) :null;
+                                objExam.Kraj = dtExamRecords.Rows[i][5].ToString().Length != 0 ? Convert.ToDateTime(dtExamRecords.Rows[i][4]) : null;
+                                objExam.Datum = dtExamRecords.Rows[i][5].ToString().Length != 0 ? Convert.ToDateTime(dtExamRecords.Rows[i][5]) : null;
+                                objExam.Ispit = dtExamRecords.Rows[i][5].ToString().Length != 0 ? Convert.ToDateTime(dtExamRecords.Rows[i][6]) : null;
+                                objExam.PopravenIspit = dtExamRecords.Rows[i][5].ToString().Length != 0 ? Convert.ToDateTime(dtExamRecords.Rows[i][7]) : null;
                                 var newExam = await _examRepository.Create(objExam);
 
                                 if (newExam != null)
