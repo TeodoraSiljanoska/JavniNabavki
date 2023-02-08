@@ -60,9 +60,9 @@ namespace JavniNabavki.Controllers
                         dsexcelRecords = reader.AsDataSet();
                         reader.Close();
 
-                        if (dsexcelRecords != null && dsexcelRecords.Tables.Count > 0)
+                        if (dsexcelRecords != null &&  dsexcelRecords.Tables.Count > 0)
                         {
-                            DataTable dtExamRecords = dsexcelRecords.Tables[0];
+                            System.Data.DataTable dtExamRecords = dsexcelRecords.Tables[0];
                             for (int i = 0; i < dtExamRecords.Rows.Count; i++)
                             {
                                 Exam objExam = new Exam();
@@ -70,12 +70,13 @@ namespace JavniNabavki.Controllers
                                 objExam.Tip = Convert.ToString(dtExamRecords.Rows[i][1]);
                                 objExam.Mesec = Convert.ToString(dtExamRecords.Rows[i][2]);
 
-                                objExam.Pocetok = dtExamRecords.Rows[i][5].ToString().Length !=0 ? Convert.ToDateTime(dtExamRecords.Rows[i][3]) :null;
-                                objExam.Kraj = dtExamRecords.Rows[i][5].ToString().Length != 0 ? Convert.ToDateTime(dtExamRecords.Rows[i][4]) : null;
-                                objExam.Datum = dtExamRecords.Rows[i][5].ToString().Length != 0 ? Convert.ToDateTime(dtExamRecords.Rows[i][5]) : null;
-                                objExam.Ispit = dtExamRecords.Rows[i][5].ToString().Length != 0 ? Convert.ToDateTime(dtExamRecords.Rows[i][6]) : null;
-                                objExam.PopravenIspit = dtExamRecords.Rows[i][5].ToString().Length != 0 ? Convert.ToDateTime(dtExamRecords.Rows[i][7]) : null;
+                                objExam.Pocetok = dtExamRecords.Rows[i][3].ToString().Length != 0 ? Convert.ToDateTime(dtExamRecords.Rows[i][3]).Date : null;
+                                objExam.Kraj = dtExamRecords.Rows[i][4].ToString().Length != 0 ? Convert.ToDateTime(dtExamRecords.Rows[i][4]).Date : null;
+                                objExam.Datum = dtExamRecords.Rows[i][5].ToString().Length != 0 ? Convert.ToDateTime(dtExamRecords.Rows[i][5]).Date : null;
+                                objExam.Ispit = dtExamRecords.Rows[i][6].ToString().Length != 0 ? Convert.ToDateTime(dtExamRecords.Rows[i][6]).Date : null;
+                                objExam.PopravenIspit = dtExamRecords.Rows[i][7].ToString().Length != 0  ? Convert.ToDateTime(dtExamRecords.Rows[i][7]).Date : null;
                                 var newExam = await _examRepository.Create(objExam);
+                                
 
                                 if (newExam != null)
                                     message = "The Excel file has been successfully uploaded.";
